@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowFest</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            background:#0f172a;
+            color:white;
+        }
+
+        nav{
+            width:100%;
+            padding:20px 80px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            position:fixed;
+            top:0;
+            left:0;
+            background:rgba(0,0,0,0.2);
+            backdrop-filter:blur(10px);
+            z-index:1000;
+        }
+
+        .logo{
+            font-size:32px;
+            font-weight:700;
+            color:white;
+        }
+
+        nav ul{
+            display:flex;
+            list-style:none;
+            gap:35px;
+        }
+
+        nav ul li a{
+            text-decoration:none;
+            color:white;
+            transition:0.3s;
+        }
+
+        nav ul li a:hover{
+            color:#c4b5fd;
+        }
+
+        .nav-btn{
+            padding:12px 28px;
+            border:none;
+            border-radius:30px;
+            background:#8b5cf6;
+            color:white;
+            cursor:pointer;
+            transition:0.3s;
+            font-weight:600;
+            box-shadow:0 0 20px rgba(139,92,246,0.5);
+        }
+
+        .nav-btn:hover{
+            background:#7c3aed;
+            transform:scale(1.05);
+        }
+
+        .hero{
+            min-height:100vh;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:140px 80px 80px;
+            background: linear-gradient(to right, #312e81, #4c1d95);
+        }
+
+        .hero-text{
+            width:50%;
+        }
+
+        .hero-text h1{
+            font-size:65px;
+            line-height:1.2;
+            margin-bottom:25px;
+            color:white;
+        }
+
+        .hero-text p{
+            font-size:18px;
+            line-height:1.8;
+            margin-bottom:35px;
+            color:#e9d5ff;
+        }
+
+        .hero-btn{
+            padding:15px 35px;
+            border:none;
+            border-radius:35px;
+            background:white;
+            color:#4c1d95;
+            font-size:16px;
+            font-weight:600;
+            cursor:pointer;
+            transition:0.3s;
+            box-shadow:0 0 20px rgba(255,255,255,0.4);
+        }
+
+        .hero-btn:hover{
+            background:#ede9fe;
+            transform:translateY(-5px);
+        }
+
+        .hero-image{
+            width:45%;
+        }
+
+        .hero-image img{
+            width:100%;
+            border-radius:20px;
+            animation:float 3s ease-in-out infinite;
+            box-shadow:0 0 30px rgba(0,0,0,0.3);
+        }
+
+        @keyframes float{
+
+            0%{
+                transform:translateY(0px);
+            }
+
+            50%{
+                transform:translateY(-15px);
+            }
+
+            100%{
+                transform:translateY(0px);
+            }
+
+        }
+
+        .features{
+            padding:100px 80px;
+            background:#111827;
+        }
+
+        .section-title{
+            text-align:center;
+            margin-bottom:60px;
+        }
+
+        .section-title h2{
+            font-size:45px;
+            margin-bottom:10px;
+            color:white;
+        }
+
+        .section-title p{
+            color:#d1d5db;
+        }
+
+        .feature-container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:30px;
+        }
+
+        .card{
+            background:#1e1b4b;
+            padding:35px;
+            border-radius:20px;
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-10px);
+            background:#312e81;
+        }
+
+        .card h3{
+            font-size:24px;
+            margin-bottom:15px;
+            color:white;
+        }
+
+        .card p{
+            color:#ddd6fe;
+            line-height:1.7;
+        }
+
+        .events{
+            padding:100px 80px;
+            background:#0f172a;
+        }
+
+        .event-container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:30px;
+        }
+
+        .event-card{
+            background:#1e1b4b;
+            border-radius:20px;
+            overflow:hidden;
+            transition:0.3s;
+        }
+
+        .event-card:hover{
+            transform:scale(1.03);
+        }
+
+        .event-card img{
+            width:100%;
+            height:220px;
+            object-fit:cover;
+        }
+
+        .event-content{
+            padding:25px;
+        }
+
+        .event-content h3{
+            font-size:24px;
+            margin-bottom:10px;
+            color:white;
+        }
+
+        .event-content p{
+            color:#ddd6fe;
+            line-height:1.7;
+            margin-bottom:20px;
+        }
+
+        .event-btn{
+            padding:10px 25px;
+            border:none;
+            border-radius:25px;
+            background:#8b5cf6;
+            color:white;
+            cursor:pointer;
+            transition:0.3s;
+            font-weight:600;
+        }
+
+        .event-btn:hover{
+            background:#7c3aed;
+        }
+
+        .stats{
+            padding:80px;
+            background: linear-gradient(to right, #312e81, #4c1d95);
+            display:flex;
+            justify-content:space-around;
+            flex-wrap:wrap;
+            text-align:center;
+            gap:30px;
+        }
+
+        .stat h2{
+            font-size:50px;
+            margin-bottom:10px;
+            color:white;
+        }
+
+        .stat p{
+            font-size:18px;
+            color:#e9d5ff;
+        }
+
+        .contact{
+            padding:100px 80px;
+            background:#111827;
+            text-align:center;
+        }
+
+        .contact h2{
+            font-size:45px;
+            margin-bottom:20px;
+            color:white;
+        }
+
+        .contact p{
+            color:#ddd6fe;
+            margin-bottom:35px;
+            line-height:1.8;
+        }
+
+        .contact button{
+            padding:15px 35px;
+            border:none;
+            border-radius:35px;
+            background:#8b5cf6;
+            color:white;
+            font-size:16px;
+            font-weight:600;
+            cursor:pointer;
+            transition:0.3s;
+            box-shadow:0 0 20px rgba(139,92,246,0.5);
+        }
+
+        .contact button:hover{
+            background:#7c3aed;
+        }
+
+        footer{
+            background:#020617;
+            padding:25px;
+            text-align:center;
+            color:#cbd5e1;
+        }
+
+        @media(max-width:900px){
+
+            nav{
+                padding:20px 30px;
+            }
+
+            nav ul{
+                display:none;
+            }
+
+            .hero{
+                flex-direction:column;
+                text-align:center;
+                padding:140px 30px 60px;
+            }
+
+            .hero-text{
+                width:100%;
+            }
+
+            .hero-text h1{
+                font-size:42px;
+            }
+
+            .hero-image{
+                width:100%;
+                margin-top:50px;
+            }
+
+            .features,
+            .events,
+            .contact{
+                padding:80px 30px;
+            }
+
+            .stats{
+                padding:60px 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="logo">Glow Fest</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <button class="nav-btn">Register</button>
+
+    </nav>
+
+    <section class="hero">
+
+        <div class="hero-text">
+            <h1>Experience The Biggest Events Of 2026 🎉</h1>
+            <p>
+                Discover concerts, fashion shows, workshops, and unforgettable experiences with EventPro.
+            </p>
+            <button class="hero-btn">Book Tickets</button>
+        </div>
+
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop" alt="Event Image">
+        </div>
+
+    </section>
+
+    <section class="features">
+
+        <div class="section-title">
+            <h2>Why Choose Us?</h2>
+            <p>
+                We create unforgettable experiences for every celebration.
+            </p>
+        </div>
+
+        <div class="feature-container">
+
+            <div class="card">
+                <h3>🎵 Live Concerts</h3>
+                <p>
+                    Enjoy performances from world-class artists and entertainers.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🎟 Easy Booking</h3>
+                <p>
+                    Book your event tickets quickly and securely online.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>✨ Premium Experience</h3>
+                <p>
+                    Enjoy amazing atmosphere, lighting, food, and entertainment.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="events">
+
+        <div class="section-title">
+            <h2>Upcoming Events</h2>
+            <p>
+                Discover our trending programs and celebrations.
+            </p>
+        </div>
+
+        <div class="event-container">
+
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1200&auto=format&fit=crop">
+                <div class="event-content">
+                    <h3>Music Festival</h3>
+                    <p>
+                        Enjoy energetic performances and unforgettable nights.
+                    </p>
+                    <button class="event-btn">Explore</button>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop">
+                <div class="event-content">
+                    <h3>Business Meetup</h3>
+                    <p>
+                        Network with entrepreneurs and industry leaders.
+                    </p>
+                    <button class="event-btn">Explore</button>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop">
+                <div class="event-content">
+                    <h3>Fashion Show</h3>
+                    <p>
+                        Explore luxury collections and trending styles.
+                    </p>
+                    <button class="event-btn">Explore</button>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="stats">
+
+        <div class="stat">
+            <h2>50K+</h2>
+            <p>Happy Visitors</p>
+        </div>
+
+        <div class="stat">
+            <h2>120+</h2>
+            <p>Events Organized</p>
+        </div>
+
+        <div class="stat">
+            <h2>15+</h2>
+            <p>Countries Reached</p>
+        </div>
+
+    </section>
+
+    <section class="contact">
+
+        <h2>Ready For Your Next Event? 🚀</h2>
+        <p>
+            Join EventPro today and enjoy unforgettable experiences.
+        </p>
+        <button>Join Now</button>
+
+    </section>
+
+    <footer>
+        © 2026 EventPro | All Rights Reserved
+    </footer>
+
+</body>
+</html>
